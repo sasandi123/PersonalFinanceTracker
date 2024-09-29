@@ -1,5 +1,6 @@
-package com.frontend.financetracker;
+package com.frontend.financetracker.Repositories;
 
+import com.frontend.financetracker.Models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.frontend.financetracker;
+package com.frontend.financetracker.Models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

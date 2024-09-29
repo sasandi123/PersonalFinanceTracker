@@ -1,11 +1,12 @@
-package com.frontend.financetracker;
+package com.frontend.financetracker.Services;
 
+import com.frontend.financetracker.DuplicateFieldException;
+import com.frontend.financetracker.Models.User;
+import com.frontend.financetracker.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 public class UserService {

@@ -1,5 +1,8 @@
-package com.frontend.financetracker;
+package com.frontend.financetracker.Controllers;
 
+import com.frontend.financetracker.Models.Transaction;
+import com.frontend.financetracker.Services.TransactionService;
+import com.frontend.financetracker.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class DashboardController {

@@ -1,5 +1,7 @@
 package com.frontend.financetracker;
 
+import com.frontend.financetracker.Models.Category;
+import com.frontend.financetracker.Services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

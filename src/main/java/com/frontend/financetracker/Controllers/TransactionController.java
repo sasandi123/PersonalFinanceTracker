@@ -1,5 +1,9 @@
-package com.frontend.financetracker;
+package com.frontend.financetracker.Controllers;
 
+import com.frontend.financetracker.Models.Category;
+import com.frontend.financetracker.Services.CategoryService;
+import com.frontend.financetracker.Models.Transaction;
+import com.frontend.financetracker.Services.TransactionService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
