@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Transaction</title>
+  <style>
+    /* Container */
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form and headings */
+    h1 {
+      text-align: center;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    /* Inputs */
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Button */
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Edit Transaction</h1>
+
+  <form th:action="@{'/transactionEntry/update/' + ${transaction.id}}" method="post">
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" th:value="${transaction.amount}" required>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" th:value="${transaction.description}" required>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category.id" required>
+      <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+              th:selected="${category.id == transaction.category.id}"></option>
+    </select>
+
+    <label for="transactionDate">Transaction Date:</label>
+    <input type="date" id="transactionDate" name="transactionDate" th:value="${#temporals.format(transaction.transactionDate, 'yyyy-MM-dd')}" required>
+
+    <button type="submit">Update</button>
+  </form>
+</div>
+</body>
+</html>

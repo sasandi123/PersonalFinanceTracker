@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            width: 400px;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px; /* Consistent padding */
+            margin: 12px 0; /* Consistent margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6c63ff;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        .login-container button:hover {
+            background-color: #5a52e6;
+        }
+        .login-container a {
+            display: block;
+            margin-top: 12px;
+            font-size: 16px;
+            color: #6c63ff;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="/login">
+    <div class="login-container">
+        <h2>User Login</h2>
+        <p>Please enter your credentials to log in.</p>
+
+        <!-- Username input -->
+        <input type="text" id="username" name="username" placeholder="Username" required />
+
+        <!-- Password input -->
+        <input type="password" id="password" name="password" placeholder="Password" required />
+
+        <!-- Submit button -->
+        <button type="submit">Login</button>
+
+        <a href="/registerUser">Register</a>
+<!--        <a href="#!">Forgot password?</a>-->
+    </div>
+</form>
+</body>
+</html>

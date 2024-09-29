@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Transaction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .form-group input,
+            /*.form-group select {*/
+            /*    width: 100%;*/
+            /*    padding: 12px;  !* Ensures consistent padding *!*/
+            /*    margin: 12px 0;*/
+            /*    border: 1px solid #ccc;*/
+            /*    border-radius: 4px;*/
+            /*    font-size: 16px;  !* Ensures consistent font size *!*/
+            /*    display: block;   !* Makes the select dropdown take full width *!*/
+            /*    box-sizing: border-box;  !* Ensures padding doesn't affect width *!*/
+            /*}*/
+            /*.form-group select {*/
+            /*    width: 100%;*/
+            /*    padding: 12px;  !* Ensures consistent padding *!*/
+            /*    margin: 12px 0;*/
+            /*    border: 1px solid #ccc;*/
+            /*    border-radius: 4px;*/
+            /*    font-size: 16px;  !* Ensures consistent font size *!*/
+            /*    display: block;   !* Makes the select dropdown take full width *!*/
+            /*    box-sizing: border-box;  !* Ensures padding doesn't affect width *!*/
+            /*    line-height: 1.5; !* Adjusts line height *!*/
+            /*    height: 45px; !* Adjust height for better display *!*/
+            /*}*/
+        .form-group select {
+            width: 100%;
+            padding: 10px;  /* Ensures consistent padding */
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;  /* Ensures consistent font size */
+            display: block;   /* Makes the select dropdown take full width */
+            box-sizing: border-box;  /* Ensures padding doesn't affect width */
+            height: calc(1.5em + 0.75rem + 2px); /* Matches the height of input fields */
+            -webkit-appearance: none; /* Removes the default styling in WebKit browsers */
+            -moz-appearance: none;    /* Removes the default styling in Firefox */
+            appearance: none;         /* Removes the default styling in all browsers */
+        }
+
+
+
+        .btn-primary {
+            background-color: #6c63ff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a52e6;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <h2>Add New Transaction</h2>
+                <form method="post" action="/transaction" th:object="${transaction}">
+                    <div class="form-group">
+                        <input type="number" step="0.01" th:field="*{amount}" placeholder="Amount" class="form-control" required />
+                        <p th:text="${#numbers.formatCurrency(transaction.amount)}"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" th:field="*{description}" placeholder="Description" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="date" th:field="*{transactionDate}" placeholder="yyyy-MM-dd" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+
+                        <select th:field="*{type}"  class="form-control" required>
+                            <option value="" disabled selected>Type</option>
+                            <option value="INCOME">Income</option>
+                            <option value="EXPENSE">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select th:field="*{category}" class="form-control" required>
+                            <option value="" disabled selected>Category</option>
+                            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" ></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
