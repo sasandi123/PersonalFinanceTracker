@@ -14,10 +14,16 @@
             color: #000;
             font-weight: bold;
             font-size: 16px;
+            border: none;
+        }
+        .nav-tabs {
+            border-bottom: 1px solid transparent; /* remove default tab border */
         }
         .nav-link.active {
-            background-color: #6f42c1; /* Purple active tab */
-            color: #fff !important;
+            background-color: transparent; /* remove the white background */
+            color: #6f42c1 !important; /* make active tab text purple */
+            font-weight: bold; /* bold for active tab */
+            border-color: transparent transparent #6f42c1; /* purple border at bottom */
         }
         .card {
             border-radius: 12px;
@@ -96,7 +102,6 @@
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Dashboard Overview</button>
-<!--            <button class="nav-link" id="nav-transactions-tab" data-bs-toggle="tab" data-bs-target="#nav-transactions" type="button" role="tab" aria-controls="nav-transactions" aria-selected="false">Transaction Log</button>-->
             <a class="nav-link" id="nav-categories-tab" href="/categories" role="tab" aria-controls="nav-categories" aria-selected="false">Manage Categories</a>
             <a class="nav-link" id="nav-entry-tab" href="/transactionEntry" role="tab" aria-controls="nav-entry" aria-selected="false">Add Transaction</a>
             <a class="nav-link" id="nav-history-tab" href="/history" role="tab" aria-controls="nav-history" aria-selected="false">Transaction History</a>
@@ -125,7 +130,6 @@
                 </div>
             </div>
 
-
             <!-- Chart for Income vs Expenses -->
             <h5>Financial Summary</h5>
             <div class="chart-legend">
@@ -141,7 +145,6 @@
             <div class="chart-container mb-4">
                 <canvas id="incomeExpensesChart"></canvas>
             </div>
-
 
             <h5>Recent Transactions</h5>
             <table class="table table-striped">
@@ -163,31 +166,12 @@
                     <td class="actions">
                         <a th:href="@{'/history?transactionId=' + ${transaction.id}}" class="btn actions-button">View</a>
                     </td>
-
                 </tr>
-
                 </tbody>
             </table>
         </div>
-
-
-
-        <!-- Categories Tab -->
-        <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab">
-            <h5>Manage Your Categories</h5>
-            <!-- Add your categories content here -->
-        </div>
-
-
-
-        <!-- History Tab -->
-        <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
-            <h5>Your Transaction History</h5>
-            <!-- Add your history content here -->
-        </div>
     </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -204,18 +188,13 @@
             data: {
                 labels: ['Income', 'Expenses'],
                 datasets: [{
-                    // label: ['Income','Expenses'],
                     data: [totalIncome, totalExpenses],
-                    backgroundColor: ['#28a745', '#dc3545'] /* Purple for income, red for expenses */
+                    backgroundColor: ['#28a745', '#dc3545'] /* Green for income, red for expenses */
                 }]
             }
         });
-
     });
-
 </script>
-
-
 </body>
 </html>
 
